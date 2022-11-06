@@ -20,8 +20,16 @@ main() {
     # shellcheck disable=SC2119
     copy_command="$(clipboard_copy_command)"
     payload="$(pane_current_path | tr -d '\n')"
-    # $copy_command below should not be quoted
-    echo "$payload" | $copy_command
+    
+    # WSL clipboard command `cat | clip.exe` doesn't work because it includes the pipe character.
+    # Instead, use `clip.exe`.
+    if type "clip.exe" >/dev/null 2>&1; then
+        echo "$payload" | clip.exe
+    else
+        # $copy_command below should not be quoted
+        echo "$payload" | $copy_command
+    fi
+    
     tmux set-buffer "$payload"
     display_notice
 }
