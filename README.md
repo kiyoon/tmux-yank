@@ -5,6 +5,10 @@ release](https://img.shields.io/github/release/tmux-plugins/tmux-yank.svg)](http
 [![GitHub
 issues](https://img.shields.io/github/issues/tmux-plugins/tmux-yank.svg)](https://github.com/tmux-plugins/tmux-yank/issues)
 
+Fork notice
+=========
+Fixes copy_pane_pwd issues with Windows (WSL, cygwin)
+
 tmux-yank
 =========
 
